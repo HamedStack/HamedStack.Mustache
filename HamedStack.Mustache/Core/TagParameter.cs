@@ -1,0 +1,20 @@
+﻿namespace HamedStack.Mustache.Core
+{
+    public sealed class TagParameter
+    {
+        public TagParameter(string parameterName)
+        {
+            if (!RegexHelper.IsValidIdentifier(parameterName))
+            {
+                throw new ArgumentException(Resources.BlankParameterName, nameof(parameterName));
+            }
+            Name = parameterName;
+        }
+
+        public string Name { get; }
+
+        public bool IsRequired { get; set; }
+
+        public object DefaultValue { get; set; }
+    }
+}
